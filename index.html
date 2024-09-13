@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial scale=1.0">
+	<title>Form Validation</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link href="./css/bootstrap.css" rel="stylesheet">
+	<link rel="./fontawesome/css/all.css">
+</head>
+<body>
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="card">
+				<div class="card-head d-flex justify-content-center align-items-center">
+					<h3>Form Validation</h3>
+				</div>
+				
+				<div class="card-body">
+					<form class="form" name="user-form" target="blank">
+						<div class="mb-3">
+							<label for="image" class="form-label">Upload Image</label>
+							<div class="upload-img">
+								<input class="form-control" type="file" id="image" onchange="return validateImg()">
+								<i class="fa-solid fa-upload"></i>
+							</div>
+							<div class="required-field" id="img-error">*Required</div>
+                            			</div>
+						<div class="row">
+							<input type="hidden" id="salary" value="100">	
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-6">
+								<label for="firstname" class="form-label">First name</label>
+								<input type="text" id="firstname" class="form-control" placeholder="Enter your Firstname" 									name="firstname" onkeyup="return validateFname();">
+								<div class="required-field" id="fname-error">*Required</div>	
+							</div>
+							<div class="col-sm-6">
+								<label for="lastname" class="form-label">Last name</label>
+								<input type="text" id="lastname" class="form-control" placeholder="Enter your Lastname" 									name="lastname" onkeyup="return validateLname();">
+								<div class="required-field" id="lname-error">*Required</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-6">
+								<label for="email" class="form-label">Email</label>
+								<input type="email" id="email" class="form-control" placeholder="Enter your Email" name="email" 								onkeyup="return validateEmail()">
+								<div class="required-field" id="email-error">*Required</div>	
+							</div>
+							<div class="col-sm-6">
+								<label for="mob" class="form-label">Phone</label>
+								<input type="tel" id="mob" class="form-control" placeholder="Enter your Phone" maxlength="10" 									name="phone" onkeyup="return validateMob()">
+								<div class="required-field" id="mob-error">*Required</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-6">
+								<label for="dob" class="form-label">Date Of Birth</label>
+								<input type="date" id="dob" class="form-control" placeholder="Enter your Birth Date" name="dob" 								onchange="return validateDob()">
+								<div class="required-field" id="dob-error">*Required</div>		
+							</div>
+							<div class="col-sm-6">
+								<label for="password" class="form-label">Password</label>
+								<input type="password" id="password" class="form-control" placeholder="Enter your Password" 									maxlength="10" name="password" onkeyup="return validatePassword()">
+								<div class="required-field" id="password-error">*Required</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-6">
+								<label for="state" class="form-label">State</label>
+								<select class="form-select" id="state" name="state" onchange="return validateState()">
+									<option value="" selected>Select your state</option>
+									<option value="Kerala">Kerala</option>
+									<option value="Tamilnadu">Tamilnadu</option>
+									<option value="Goa">Goa</option>
+									<option value="Punjab">Punjab</option>	
+								</select>
+								<div class="required-field" id="state-error">*Required</div>		
+							</div>
+							<div class="col-sm-6">
+								<label for="exp" class="form-label">Years of Experience</label>
+								<input type="number" id="exp" class="form-control" placeholder="Enter the years of experience" 									onchange="return validateExp()" onkeyup="return validateExp()">
+								<div class="required-field" id="exp-error">*Required</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-sm-6">
+								<label class="form-label">Gender</label>
+								<div class="d-flex align-items-center gap-4">
+									<div class="form-check">
+										<input type="radio" id="male" class="form-check-input" name="gender" value="male" 										onclick="return validateGender()">
+										<label for="male" class="form-check-label">Male</label>
+									</div>
+									<div class="form-check">
+										<input type="radio" id="female" class="form-check-input" name="gender" value="female" 										onclick="return validateGender()">
+										<label for="female" class="form-check-label">Female</label>
+									</div>
+								</div>
+								<div class="required-field" id="gender-error">*Required</div>
+							</div>
+							<div class="col-sm-6">
+								<label for="area-int" class="form-label">Area of Interest</label>
+								<input type="text" class="form-control" id="area-int" placeholder="Enter your Interested areas" 								onkeyup="return validateIntArea()">
+								<div class="required-field" id="int-error">*Required</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for ="qualifications" class="form-label">Qualifications</label>
+							<textarea id="qualifications" class="form-control" rows="8" cols="40" name="qualifications" 
+							placeholder="Enter your qualificatons" onkeyup="return validateQual()"></textarea>
+							<div class="required-field" id="qual-error">*Required</div>	
+						</div>
+						<div class="row mb-3">
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" id="terms" name="terms" value="terms" 										onclick="validateTerms()">
+                                            			<label for="terms" class="form-check-label pe-2">I accept the terms and conditions</label>
+								<div class="required-field" id="term-error">*Required</div>
+                                        		</div>	
+						</div>
+						<div class="row d-flex justify-content-end align-items-center">
+    							<button class="btn btn-primary submit-btn" type="submit" onclick="validateForm(event)">Submit</button>
+ 						</div>
+						<div class="required-field" id="submit-error">*Required</div>
+					</form>					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>  	
