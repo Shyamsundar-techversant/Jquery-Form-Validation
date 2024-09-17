@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<link href="./css/bootstrap.css" rel="stylesheet">
 	<link rel="./fontawesome/css/all.css">
+	<script src="jquery-3.7.1.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -17,14 +18,14 @@
 				</div>
 				
 				<div class="card-body">
-					<form class="form" name="user-form" target="blank">
+					<form class="form" name="user-form" action='res.html'>
 						<div class="mb-3">
 							<label for="image" class="form-label">Upload Image</label>
 							<div class="upload-img">
-								<input class="form-control" type="file" id="image" onchange="return validateImg()">
+								<input class="form-control" type="file" id="image">
 								<i class="fa-solid fa-upload"></i>
 							</div>
-							<div class="required-field" id="img-error">*Required</div>
+							<div class="required-field" id="img-error"></div>
                             			</div>
 						<div class="row">
 							<input type="hidden" id="salary" value="100">	
@@ -32,55 +33,55 @@
 						<div class="row mb-3">
 							<div class="col-sm-6">
 								<label for="firstname" class="form-label">First name</label>
-								<input type="text" id="firstname" class="form-control" placeholder="Enter your Firstname" 									name="firstname" onkeyup="return validateFname();">
-								<div class="required-field" id="fname-error">*Required</div>	
+								<input type="text" id="firstname" class="form-control" placeholder="Enter your Firstname" 									name="firstname">
+								<div class="required-field" id="fname-error"></div>	
 							</div>
 							<div class="col-sm-6">
 								<label for="lastname" class="form-label">Last name</label>
-								<input type="text" id="lastname" class="form-control" placeholder="Enter your Lastname" 									name="lastname" onkeyup="return validateLname();">
-								<div class="required-field" id="lname-error">*Required</div>
+								<input type="text" id="lastname" class="form-control" placeholder="Enter your Lastname" 									name="lastname">
+								<div class="required-field" id="lname-error"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-sm-6">
 								<label for="email" class="form-label">Email</label>
-								<input type="email" id="email" class="form-control" placeholder="Enter your Email" name="email" 								onkeyup="return validateEmail()">
-								<div class="required-field" id="email-error">*Required</div>	
+								<input type="email" id="email" class="form-control" placeholder="Enter your Email" name="email">
+								<div class="required-field" id="email-error"></div>	
 							</div>
 							<div class="col-sm-6">
 								<label for="mob" class="form-label">Phone</label>
-								<input type="tel" id="mob" class="form-control" placeholder="Enter your Phone" maxlength="10" 									name="phone" onkeyup="return validateMob()">
-								<div class="required-field" id="mob-error">*Required</div>
+								<input type="tel" id="mob" class="form-control" placeholder="Enter your Phone" maxlength="10" 									name="phone">
+								<div class="required-field" id="mob-error"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-sm-6">
 								<label for="dob" class="form-label">Date Of Birth</label>
-								<input type="date" id="dob" class="form-control" placeholder="Enter your Birth Date" name="dob" 								onchange="return validateDob()">
-								<div class="required-field" id="dob-error">*Required</div>		
+								<input type="date" id="dob" class="form-control" placeholder="Enter your Birth Date" name="dob">
+								<div class="required-field" id="dob-error"></div>		
 							</div>
 							<div class="col-sm-6">
 								<label for="password" class="form-label">Password</label>
-								<input type="password" id="password" class="form-control" placeholder="Enter your Password" 									maxlength="10" name="password" onkeyup="return validatePassword()">
-								<div class="required-field" id="password-error">*Required</div>
+								<input type="password" id="password" class="form-control" placeholder="Enter your Password" 									maxlength="10" name="password">
+								<div class="required-field" id="password-error"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-sm-6">
 								<label for="state" class="form-label">State</label>
-								<select class="form-select" id="state" name="state" onchange="return validateState()">
+								<select class="form-select" id="state" name="state">
 									<option value="" selected>Select your state</option>
 									<option value="Kerala">Kerala</option>
 									<option value="Tamilnadu">Tamilnadu</option>
 									<option value="Goa">Goa</option>
 									<option value="Punjab">Punjab</option>	
 								</select>
-								<div class="required-field" id="state-error">*Required</div>		
+								<div class="required-field" id="state-error"></div>		
 							</div>
 							<div class="col-sm-6">
 								<label for="exp" class="form-label">Years of Experience</label>
-								<input type="number" id="exp" class="form-control" placeholder="Enter the years of experience" 									onchange="return validateExp()" onkeyup="return validateExp()">
-								<div class="required-field" id="exp-error">*Required</div>
+								<input type="number" id="exp" class="form-control" placeholder="Enter the years of experience">
+								<div class="required-field" id="exp-error"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -88,43 +89,44 @@
 								<label class="form-label">Gender</label>
 								<div class="d-flex align-items-center gap-4">
 									<div class="form-check">
-										<input type="radio" id="male" class="form-check-input" name="gender" value="male" 										onclick="return validateGender()">
+										<input type="radio" id="male" class="form-check-input" name="gender" value="male">
 										<label for="male" class="form-check-label">Male</label>
 									</div>
 									<div class="form-check">
-										<input type="radio" id="female" class="form-check-input" name="gender" value="female" 										onclick="return validateGender()">
+										<input type="radio" id="female" class="form-check-input" name="gender" value="female">
 										<label for="female" class="form-check-label">Female</label>
 									</div>
 								</div>
-								<div class="required-field" id="gender-error">*Required</div>
+								<div class="required-field" id="gender-error"></div>
 							</div>
 							<div class="col-sm-6">
 								<label for="area-int" class="form-label">Area of Interest</label>
-								<input type="text" class="form-control" id="area-int" placeholder="Enter your Interested areas" 								onkeyup="return validateIntArea()">
-								<div class="required-field" id="int-error">*Required</div>
+								<input type="text" class="form-control" id="area-int" placeholder="Enter your Interested areas">
+								<div class="required-field" id="int-error"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label for ="qualifications" class="form-label">Qualifications</label>
 							<textarea id="qualifications" class="form-control" rows="8" cols="40" name="qualifications" 
-							placeholder="Enter your qualificatons" onkeyup="return validateQual()"></textarea>
-							<div class="required-field" id="qual-error">*Required</div>	
+							placeholder="Enter your qualificatons"></textarea>
+							<div class="required-field" id="qual-error"></div>	
 						</div>
 						<div class="row mb-3">
 							<div class="form-check">
-								<input type="checkbox" class="form-check-input" id="terms" name="terms" value="terms" 										onclick="validateTerms()">
+								<input type="checkbox" class="form-check-input" id="terms" name="terms" value="terms">
                                             			<label for="terms" class="form-check-label pe-2">I accept the terms and conditions</label>
-								<div class="required-field" id="term-error">*Required</div>
+								<div class="required-field" id="term-error"></div>
                                         		</div>	
 						</div>
 						<div class="row d-flex justify-content-end align-items-center">
-    							<button class="btn btn-primary submit-btn" type="submit" onclick="validateForm(event)">Submit</button>
+    							<button class="btn btn-primary submit-btn" type="submit">Submit</button>
  						</div>
-						<div class="required-field" id="submit-error">*Required</div>
+						<div class="required-field" id="submit-error"></div>
 					</form>					
 				</div>
 			</div>
 		</div>
 	</div>
+	<script src="script.js"></script>
 </body>
 </html>  	
